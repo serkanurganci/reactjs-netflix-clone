@@ -4,13 +4,12 @@ import "./Row.scss";
 
 const image_base_url = "https://image.tmdb.org/t/p/original/";
 
-function Row({ title, apiUrl }) {
+function Row({ title, apiUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const request = await axios.get(apiUrl);
       setMovies(request.data.results);
-      console.log(request);
     };
     fetchData();
   }, [apiUrl]);
@@ -21,9 +20,12 @@ function Row({ title, apiUrl }) {
       <div className="row__posters">
         {movies.map((movie) => (
           <img
+            key={movie.id}
             alt={movie.name}
-            src={`${image_base_url}${movie.poster_path}`}
-            className="row__poster"
+            src={`${image_base_url}${
+              isLargeRow ? movie.poster_path : movie.backdrop_path
+            }`}
+            className={`row__poster ${isLargeRow && "row__posterLarge"}`}
           />
         ))}
       </div>
