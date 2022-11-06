@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "@/axios";
 import "./Row.scss";
-
-const image_base_url = "https://image.tmdb.org/t/p/original/";
+import { image_base_url } from "@/helpers";
 
 function Row({ title, apiUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
