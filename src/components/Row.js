@@ -19,6 +19,7 @@ function Row({ title, apiUrl, isLargeRow }) {
       <div className="row__posters">
         {movies.map((movie) => (
           <img
+            onError={(e) => (e.target.style.display = "none")}
             key={movie.id}
             alt={movie.name}
             src={`${image_base_url}${

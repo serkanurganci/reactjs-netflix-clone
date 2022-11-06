@@ -6,7 +6,6 @@ function Navbar() {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      console.log("listener");
       if (window.scrollY > 100) {
         setShowNavBlack(true);
       } else {
